@@ -27,7 +27,7 @@ for arg in "$@"; do
   case "$arg" in
     -y|--yes)     ASSUME_YES=1 ;;
     --no-backup)  DO_BACKUP=0 ;;
-    -h|--help)    sed -n '2,12p' "$0"; exit 0 ;;
+    -h|--help)    sed -n '2,10s/^# \{0,1\}//p' "$0"; exit 0 ;;
     *)            die "unknown option: $arg" ;;
   esac
 done
