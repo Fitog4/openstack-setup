@@ -1,0 +1,12 @@
+#cloud-config
+# Minimal cloud-init for the cheap test VM. For the GPU run, extend runcmd
+# with the inference server install and the model weights download.
+package_update: true
+packages:
+  - curl
+  - jq
+runcmd:
+  - mkdir -p /srv/ai-data
+  - 'echo "hello from $(hostname) at $(date -u +%FT%TZ)" > /srv/ai-data/hello.txt'
+  - chown -R ubuntu:ubuntu /srv/ai-data
+  - touch /var/lib/ai-ready
